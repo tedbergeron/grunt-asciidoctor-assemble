@@ -1,0 +1,87 @@
+== grunt-asciidoctor-assemble
+This is a combination of grunt-asciidoctor and assemble.
+
+Uses AsciiDoc or Markdown files to produce a mini-website.
+
+=== Usage
+
+* Put AsciiDoc or Markdown text files into /docs directory
+** Code supports .adoc or .md files 
+
+At command prompt run "grunt"
+
+Asciidoc files are converted into html and placed in /website directory
+
+=== How it works
+
+.grunt-asciidoctor
+* Takes .adocs in /docs directory
+* Renders .html files into /rendered directory
+
+NOTE: Asciidoctor is set to render the body only
+
+.assemble
+* Takes AsciiDoc rendered .html files in /rendered directory
+* Assembles this by injecting into the template from /template directory
+* saves as .html into /website
+
+=== Relies on Template and supporting CSS
+
+.bootstrap-starter-template.hbs
+
+* This is basic bootstrap page
+* And it is a Handlebars template
+** all AsciiDoc rendered html is injected into the Handlebars {{> body }} in the template
+* Modify links in the top and side navigation menus
+* Substitute template with any HTML page you want. Place Handlebars {{> body }} in your template where you want the AsciiDoc content to go.
+
+.website/content directory
+
+* Requires at least one Asciidoctor CSS theme.
+** this must be linked in the template
+* All other files are related to Bootstrap. 
+Can be safely replaced with your own code.
+
+
+== Install
+* Copy entire project to a directory. 
+* Replace text files in /docs with your own
+* run "grunt" at command prompt (of course requires grunt)
+* click on /website/index.html to view in browser
+* go back and modify /template/bootstrap-starter-template.hbs to fix links to yours.
+
+=== How I set this up
+You don't need to do this if you have just downloaded the project, 
+because all this code is already there. These are just notes on how I 
+did it from scratch.
+
+* Download Bootstrap (used 3.2.0)
+** place into \website\content\
+
+* run "npm install" at command prompt
+** (see error note about Assemble below)
+* this will read the package.json and download 
+** node_modules_
+*** assemble
+*** grunt
+*** grunt-asciidoctor
+*** grunt-contrib-clean
+
+== Notes
+
+Found this article useful:
+
+*Building a basic static site using grunt and assemble*
+http://blog.parkji.co.uk/2013/07/06/building-a-static-site-using-grunt-and-assemble.html
+
+.grunt-assemble Error 
+ warning: cannot read property 'stage' of undefined use
+ 
+I was able to copy an older version of Assemble (included in this 
+project) that works.
+This was a known bug in Assemble, but supposedly fixed. But as of 
+9-JUL-2014 when I tried to npm install Assemble, the version I got 
+has this error. It could be a compatibility problem
+with Grunt. I'm using Grunt 0.4.5 for Asciidoctor and the 
+Assemble uses Grunt 0.4.1. But I tried both and still ran into the 
+problem with Assemble.

@@ -1,0 +1,122 @@
+= Title
+This is the preamble.
+
+
+
+== Rendered with Asciidoctor.js
+The preamble under title does not display by default.
+
+To start a new paragraph, leave a blank line by hitting
+Enter twice, then just keep on typing.
+
+=== Level 3 Section
+
+.TODO list
+* Learn the AsciiDoc syntax
+** Install Asciidoctor
+** Write my document
+
+=== Admonition Blocks
+
+TIP: this is a *tip* admonition paragraph.
+
+NOTE: this is a *note* admonition paragraph.
+
+WARNING: this is a *warning* admonition paragraph.
+
+IMPORTANT: this is a *important* admonition paragraph.
+
+CAUTION: this is a *caution* admonition paragraph.
+
+=== Font Awesome tags
+http://fortawesome.github.io/Font-Awesome/icons/
+Uses the 16 predefined colors in HTML. Many icons don't work.
+
+icon:question[role=blue] This is the question
+
+icon:bug[role=red] this is a bug
+
+icon:flag[role=lime] lime colored flag
+
+icon:check[role=green] this is a checkmark
+
+icon:envelope[] envelope, icon:circle[] circle, icon:html5[role=red], icon:linux[], icon:css3[], icon:github-alt[]
+
+icon:bolt[], icon:plane[], icon:plus[], icon:pencil[]
+icon:refresh[], icon:rss[], icon:trash[], icon:ticket[]
+icon:globe[], icon:home[], icon:wrench[]
+
+
+********
+icon:quote-left[2x] This is the quote-left and quote right icon:quote-right[2x]
+********
+
+icon:star[2x, role=yellow] the star icon.
+
+icon:tags[role=blue, link=http://example.com] tags: ruby, asciidoctor
+
+
+[quote, Abraham Lincoln, National Cemetery Dedication]
+____
+Four score and seven years ago our fathers brought forth
+on this continent a new nation... 
+____
+
+
+=== Tables
+
+.An example table
+[options="header,footer"]
+|=======================
+|Col 1|Col 2      |Col 3
+|1    |Item 1     |a
+|2    |Item 2     |b
+|3    |Item 3     |c
+|6    |Three items|d
+|=======================
+
+
+.CSV data, 15% each column
+[format="csv",width="60%",cols="4"]
+[frame="topbot",grid="none"]
+|======
+1,2,3,4
+a,b,c,d
+A,B,C,D
+|======
+
+[options=interactive]
+- [*] checked
+- [x] also checked
+- [ ] not checked
+
+
+
+
+== Markdown style bullets
+- one
+- two
+- three
+
+== Callout Markers
+
+----
+This is a callout. Must be at end of line // <1>
+apparently has to be inside this block to work
+----
+
+
+ this indented block works too // <1>
+ notice one space on the left
+ 
+<1> callout explained
+
+== Footnotes
+
+A footnote footnote:[An example footnote.];
+a second footnote with a reference ID footnoteref:[note2,Second footnote.];
+finally a reference to the second footnote footnoteref:[note2].
+
+
+.Use built-in attribute asciidoctor-version
+Document generated with Asciidoctor {asciidoctor-version}.
