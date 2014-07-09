@@ -1,9 +1,9 @@
 /*
  * grunt-asciidoctor-assemble
- * ??? https://github.com/tedbergeron/grunt-asciidoctor-assemble ???
+ * https://github.com/tedbergeron/grunt-asciidoctor-assemble
  *
  * Copyright (c) 2014 Ted Bergeron
- * ??? Licensed under the MIT license. ???
+ * Licensed under the MIT license.
  */
 
 module.exports = function(grunt) {
@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
   
-	// Before generating any new files, remove any previously-created files.
+	// Before generating any new files, remove any previously created files.
     clean: {
 		all: ['rendered', 'website/*.html']
     },
@@ -23,10 +23,10 @@ module.exports = function(grunt) {
           cwd: 'docs/',
 		  //showTitle: false,			// overridden when header_footer: true
 		  //header_footer: true,		// do not want this for this project, using our own template.		  
-		  //icons: 'font', 				// this doesn't work. Unsure how to render icons with this.
+		  icons: 'font' 				// this doesn't work. Unsure how to render icons with this.
         },
         files: {
-          // TAB: adding markdown files too
+          // Mostly supports markdown files too
           'rendered/': ['**/*.adoc', '!includes/**/*.adoc', '**/*.md']		  
         }
       }
@@ -46,19 +46,16 @@ module.exports = function(grunt) {
 			}
 		}
 	}
-	
-	
-	
 
   });
   
 
-  // These plugins provide necessary tasks.
+  // necessary tasks.
   grunt.loadNpmTasks('grunt-asciidoctor');
   grunt.loadNpmTasks('grunt-contrib-clean');  
   grunt.loadNpmTasks('assemble');
   
-  // default run this.
+  // grunt default run
   grunt.registerTask('default', ['clean', 'asciidoctor', 'assemble']);
 
 };
