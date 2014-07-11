@@ -1,87 +1,103 @@
 == grunt-asciidoctor-assemble
-This is a combination of grunt-asciidoctor and assemble.
+This is a grunt script that uses AsciiDoc or Markdown files to produce a mini-website. This is a combination of grunt-asciidoctor and assemble. Thanks @anthonny_q for grunt-asciidoctor.
 
-Uses AsciiDoc or Markdown files to produce a mini-website.
+=== Getting Started
+
+This script requires Grunt `~0.4.5`
+
+If you haven't used http://gruntjs.com/[Grunt] before, be sure to check out the http://gruntjs.com/getting-started[Getting Started] guide.
+
 
 === Usage
 
 * Put AsciiDoc or Markdown text files into /docs directory
-** Code supports .adoc or .md files 
+** Code supports .adoc or .md files
 
-At command prompt run "grunt"
+At command prompt, cd to your project directory and run
+ 
+ > grunt
 
 Asciidoc files are converted into html and placed in /website directory
 
 === How it works
 
+.clean
+* grunt-contrib-clean is set to delete all files out of the /rendered directory each time
+* it also cleans out the .html files from the /website directory
+* This was you can add or delete content files in the /docs directory without worrying about removing dead files from your /website
+
 .grunt-asciidoctor
-* Takes .adocs in /docs directory
+* Takes .adoc and .md files in /docs directory
 * Renders .html files into /rendered directory
 
 NOTE: Asciidoctor is set to render the body only
 
 .assemble
 * Takes AsciiDoc rendered .html files in /rendered directory
-* Assembles this by injecting into the template from /template directory
+* Assembles these by injecting each file into the template from /template directory
 * saves as .html into /website
+
+NOTE: NameOfFile.adoc converts to NameOfFile.html
 
 === Relies on Template and supporting CSS
 
 .bootstrap-starter-template.hbs
 
-* This is basic bootstrap page
-* And it is a Handlebars template
-** all AsciiDoc rendered html is injected into the Handlebars {{> body }} in the template
-* Modify links in the top and side navigation menus
-* Substitute template with any HTML page you want. Place Handlebars {{> body }} in your template where you want the AsciiDoc content to go.
+* This is basic bootstrap page and it is a Handlebars template.
+** each AsciiDoc rendered html file is injected into the Handlebars {{> body }} in the template.
+* You can modify this template by changing the  links in the top and side navigation menus to fit your website.
+* Substitute this template with your HTML page. Just place Handlebars {{> body }} in your template where you want the AsciiDoc content to go. Rename .html to .hbs to make it a Handlebars template.
+
+TIP: Use summary.adoc file to build your navigation menu. Maintain your menu link changes in this file. Run grunt. This will produce a summary.html file. Copy HTML links out of this and paste into the template and save. Run grunt again. (...someday it would be nice to have this built into the template, but I don't know Handlebars yet.)
 
 .website/content directory
 
-* Requires at least one Asciidoctor CSS theme.
+* Requires one Asciidoctor CSS theme found in /website/content/AsciiDocThemes
 ** this must be linked in the template
-* All other files are related to Bootstrap. 
+* All other files are related to Bootstrap.
 Can be safely replaced with your own code.
 
 
 == Install
-* Copy entire project to a directory. 
+* Copy this entire project to your project directory.
 * Replace text files in /docs with your own
-* run "grunt" at command prompt (of course requires grunt)
+** grunt script only supports .adoc or .md files
+* at command prompt, cd to your project directory
+* at command prompt, run "grunt" (requires grunt to work)
 * click on /website/index.html to view in browser
-* go back and modify /template/bootstrap-starter-template.hbs to fix links to yours.
+* Next, go back and modify /template/bootstrap-starter-template.hbs to fix links to yours.
+* run grunt again
 
 === How I set this up
-You don't need to do this if you have just downloaded the project, 
-because all this code is already there. These are just notes on how I 
+You don't need to do this if you have just downloaded the project,
+because all this code is already there. These are just notes on how I
 did it from scratch.
 
-* Download Bootstrap (used 3.2.0)
-** place into \website\content\
-
 * run "npm install" at command prompt
-** (see error note about Assemble below)
-* this will read the package.json and download 
+
+ > npm install
+
+* this will read the package.json and download
 ** node_modules_
 *** assemble
 *** grunt
 *** grunt-asciidoctor
 *** grunt-contrib-clean
 
-== Notes
+* I chose to use Bootstrap as my template. 
+** downloaded Bootstrap (used 3.2.0)
+** placed into \website\content\
 
-Found this article useful:
+=== Notes
 
-*Building a basic static site using grunt and assemble*
-http://blog.parkji.co.uk/2013/07/06/building-a-static-site-using-grunt-and-assemble.html
+Found this article useful: link:http://blog.parkji.co.uk/2013/07/06/building-a-static-site-using-grunt-and-assemble.html[Building a basic static site using grunt and assemble]
 
-.grunt-assemble Error 
- warning: cannot read property 'stage' of undefined use
- 
-I was able to copy an older version of Assemble (included in this 
-project) that works.
-This was a known bug in Assemble, but supposedly fixed. But as of 
-9-JUL-2014 when I tried to npm install Assemble, the version I got 
-has this error. It could be a compatibility problem
-with Grunt. I'm using Grunt 0.4.5 for Asciidoctor and the 
-Assemble uses Grunt 0.4.1. But I tried both and still ran into the 
-problem with Assemble.
+
+.grunt-assemble Error fixed
+as of 7/11/2014 when I installed assemble the previous problem is gone.
+
+=== Copyright
+
+Copyright © 2014 Ted Bergeron. Free use of this software is granted under the terms of the MIT License.
+
+See the LICENSE file for details.

@@ -4,5 +4,32 @@
     "assemble": "~0.4.0",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-asciidoctor": "^0.1.0"
-  }
+  },
+  "name": "grunt-asciidoctor-assemble",
+  "description": "Uses AsciiDoc or Markdown files to produce a mini-website. This is a combination of grunt-asciidoctor and assemble. Thanks @anthonny_q for grunt-asciidoctor.",
+  "version": "0.1.0",
+  "main": "Gruntfile.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tedbergeron/grunt-asciidoctor-assemble.git"
+  },
+  "keywords": [
+    "grunt",
+    "asciidoctor",
+    "asciidoc",
+    "assemble"
+  ],
+  "author": "Ted Bergeron",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tedbergeron/grunt-asciidoctor-assemble/issues"
+  },
+  "homepage": "https://github.com/tedbergeron/grunt-asciidoctor-assemble"
 }
