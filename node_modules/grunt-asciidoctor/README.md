@@ -79,6 +79,12 @@ Default value: `'article'`
 
 A string value to define the doctype.
 
+#### options.backend
+Type: `String`
+Default value: `'html5'`
+
+A string value to define the backend.
+
 ### Usage Examples
 
 #### Default Options
@@ -107,7 +113,8 @@ grunt.initConfig({
       showToc: false,
       header_footer: true,
       safeMode: 'secure',
-      doctype: 'article'
+      doctype: 'article',
+      backend: 'html5'
     },
     files: {
       'dest/asciidoc': ['adocument.adoc', 'adocs/**/*.adoc'],

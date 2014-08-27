@@ -2,7 +2,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This is a demonstration of Asciidoctor 1.5.0-preview.7.
+<p>This is a demonstration of Asciidoctor 1.5.0.
 And this is the preamble of this document.</p>
 </div>
 <div id="purpose" class="sidebarblock">
@@ -38,32 +38,9 @@ Items marked with TODO are either not yet supported or a work in progress.
 </table>
 </div>
 <div class="paragraph">
-<p>[[1-first-steps-with-asciidoc]]</p>
+<p>[[1-first-steps-with-asciidoc]]
+== First Steps: with AsciiDoc</p>
 </div>
-</div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#first_steps_with_asciidoc">1. First Steps with AsciiDoc</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#lists_upon_lists">1.1. Lists Upon Lists</a></li>
-</ul>
-</li>
-<li><a href="#and_we_re_back">2. &#8230;and we&#8217;re back!</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#block_quotes_and_smart_ones">2.1. Block Quotes and &#8220;Smart&#8221; Ones</a></li>
-</ul>
-</li>
-<li><a href="#literally">3. Getting Literal</a></li>
-<li><a href="#wrapup">4. Wrap-up</a></li>
-</ul>
-</div>
-</div>
-<div class="sect1">
-<h2 id="first_steps_with_asciidoc">1. First Steps with AsciiDoc</h2>
-<div class="sectionbody">
 <div class="ulist">
 <div class="title">Inline markup</div>
 <ul>
@@ -129,8 +106,23 @@ have a <a href="http://example.com?foo=bar&amp;lang=en">query string</a>.</p>
 just end it in a &#43; sign<br>
 and continue typing on the next line.</p>
 </div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel2">
+<li><a href="#lists_upon_lists">1. Lists Upon Lists</a></li>
+<li><a href="#and_we_re_back">2. &#8230;&#8203;and we&#8217;re back!</a>
+<ul class="sectlevel2">
+<li><a href="#block_quotes_and_smart_ones">2.1. Block Quotes and &#8220;Smart&#8221; Ones</a></li>
+</ul>
+</li>
+<li><a href="#literally">3. Getting Literal</a></li>
+<li><a href="#wrapup">4. Wrap-up</a></li>
+</ul>
+</div>
+</div>
 <div class="sect2">
-<h3 id="lists_upon_lists">1.1. Lists Upon Lists</h3>
+<h3 id="lists_upon_lists">1. Lists Upon Lists</h3>
 <div class="ulist">
 <div class="title">Adjacent lists</div>
 <ul>
@@ -252,17 +244,15 @@ first level</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s make a horizontal rule&#8230;</p>
+<p>Let&#8217;s make a horizontal rule&#8230;&#8203;</p>
 </div>
 <hr>
 <div class="paragraph">
 <p>then take a break.</p>
 </div>
 </div>
-</div>
-</div>
 <div class="sect1">
-<h2 id="and_we_re_back">2. &#8230;and we&#8217;re back!</h2>
+<h2 id="and_we_re_back">2. &#8230;&#8203;and we&#8217;re back!</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Want to see a <span class="image"><img src="images/tiger.png" alt="Tiger"></span>?</p>
@@ -277,12 +267,12 @@ first level</p>
 <div class="title">Figure 1. Tiger in a box</div>
 </div>
 <div class="paragraph">
-<p><a href="includes/include.adoc">includes/include.adoc</a></p>
+<p><a href="includes/include.adoc" class="bare">includes/include.adoc</a></p>
 </div>
 <div class="listingblock">
 <div class="title">Asciidoctor usage example. The listing should contain 5 lines.</div>
 <div class="content">
-<pre class="highlight"><code class="ruby language-ruby">require 'asciidoctor'
+<pre class="highlight"><code class="language-ruby" data-lang="ruby">require 'asciidoctor'
 
 doc = Asciidoctor.load '*This* is http://asciidoc.org[AsciiDoc]!', header_footer: true
 
@@ -292,7 +282,7 @@ puts doc.render</code></pre>
 <div class="listingblock">
 <div class="title">Output of Asciidoctor usage example</div>
 <div class="content">
-<pre class="highlight"><code class="html language-html">&lt;!DOCTYPE html&gt;
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
 &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
@@ -344,8 +334,8 @@ however improbable, must be the truth.</p>
 </div>
 </blockquote>
 <div class="attribution">
-<cite>The Adventures of Sherlock Holmes</cite><br>
-&#8212; Sir Arthur Conan Doyle
+&#8212; Sir Arthur Conan Doyle<br>
+<cite>The Adventures of Sherlock Holmes</cite>
 </div>
 </div>
 <div class="paragraph">
@@ -414,7 +404,7 @@ AsciiDoc is quite cool, you should try it!
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://asciidoc.org">http://asciidoc.org</a></p>
+<p><a href="http://asciidoc.org" class="bare">http://asciidoc.org</a></p>
 </li>
 </ul>
 </div>
@@ -441,7 +431,7 @@ One more thing. Happy documenting!
 </table>
 </div>
 <div class="paragraph">
-<p><a id="google"></a>When all else fails, head over to <a href="http://google.com">http://google.com</a>.</p>
+<p><a id="google"></a>When all else fails, head over to <a href="http://google.com" class="bare">http://google.com</a>.</p>
 </div>
 </div>
 </div>

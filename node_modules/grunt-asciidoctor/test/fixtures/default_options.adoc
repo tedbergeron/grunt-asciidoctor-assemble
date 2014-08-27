@@ -16,6 +16,7 @@ Dan Allen <thedoc@asciidoctor.org>
 :toc: manual
 :css-signature: demo
 :toc-placement: preamble
+:docdate: 2014-01-01
 //:max-width: 800px
 //:doctype: book
 //:sectids!:
@@ -40,8 +41,7 @@ TIP: If you want the output to look familiar, copy (or link) the AsciiDoc styles
 NOTE: Items marked with TODO are either not yet supported or a work in progress.
 
 [[1-first-steps-with-asciidoc]]
-
-== First Steps with AsciiDoc
+== First Steps: with AsciiDoc
 
 .Inline markup
 * single quotes around a phrase place 'emphasis'

@@ -28,10 +28,15 @@ exports.asciidoctor = {
     done();
   },
   default_options: function(test) {
-    test.expect(1);
-
     var actual = grunt.file.read('tmp/default_options.html');
     var expected = grunt.file.read('test/expected/default_options.html');
+    test.equal(actual+'\n', expected, 'should describe what the default behavior is.');
+
+    test.done();
+  },
+  docbook5: function(test) {
+    var actual = grunt.file.read('tmp/default_options.xml');
+    var expected = grunt.file.read('test/expected/docbook5.xml');
     test.equal(actual+'\n', expected, 'should describe what the default behavior is.');
 
     test.done();

@@ -33,6 +33,20 @@ module.exports = function(grunt) {
       default_options: {
         options: {
           cwd: 'test/fixtures/',
+          doctype: 'article',
+          backend: 'html5'
+        },
+        files: {
+          'tmp/': ['**/*.adoc', '!includes/**/*.adoc']
+        }
+      },
+      docbook5: {
+        options: {
+          cwd: 'test/fixtures/',
+          doctype: 'book',
+          backend: 'docbook5',
+          safeMode: 'safe',
+          header_footer: true
         },
         files: {
           'tmp/': ['**/*.adoc', '!includes/**/*.adoc']

@@ -9,8 +9,8 @@
 'use strict';
 
 
-var Ajs = require('asciidoctorjs-npm-wrapper');
-var Asciidoctor = Ajs.Asciidoctor;
+var Ajs = require('asciidoctor.js')();
+var Asciidoctor = Ajs.Asciidoctor(true);
 var Opal = Ajs.Opal;
 var path = require('path');
 
@@ -30,14 +30,30 @@ module.exports = function(grunt) {
       showToc: true,
       header_footer: false,
       safeMode: 'secure',
-      doctype: 'article'
+      doctype: 'article',
+      backend: 'html5'
     });
+
+    // TODO workaround, We can certainly get extension from Asciidoctor result
+    var extensions = {
+      html5: '.html',
+      docbook45: '.xml',
+      docbook5: '.xml'
+    };
 
 
     // Define asciidoc attibutes
-    var attributes = options.showTitle ? 'showtitle' : 'showtitle!';
-    attributes.concat(' ').concat(options.showNumberedHeadings ? 'numbered' : 'numbered!');
-    attributes.concat(' ').concat(options.showToc ? 'toc=preamble toc2!' : 'toc! toc2!');
+    var attributes = [];
+    attributes.push(options.showTitle ? 'showtitle' : 'showtitle!');
+    attributes.push(options.showNumberedHeadings ? 'numbered' : 'numbered!');
+    attributes.push(options.showToc ? 'toc=preamble toc2!' : 'toc! toc2!');
+    attributes.push(options.doctype ? 'doctype='+options.doctype : 'article');
+    attributes.push(options.backend ? 'backend='+options.backend : 'html5');
+
+    if (options.attributes) {
+      attributes = attributes.concat(options.attributes);
+    }
+
     Opal.ENV['$[]=']("PWD",path.resolve());
 
     // Iterate over all specified file groups.
@@ -72,16 +88,16 @@ module.exports = function(grunt) {
             'header_footer': options.header_footer,
             'attributes': attributes
         });
-        var html = Asciidoctor.$convert(fileContent, opts);
-        //return html;
+        var content = Asciidoctor.$convert(fileContent, opts);
+        //return content;
         var destination = f.dest;
         if (isDirectory){
           destination = path.join(destination, filepath);
-          destination = destination.split(path.extname(destination))[0].concat('.html');
+          destination = destination.split(path.extname(destination))[0].concat(extensions[options.backend]);
         }
         grunt.file.setBase( gruntBase );
         // Write the destination file.
-        grunt.file.write(destination, html);
+        grunt.file.write(destination, content);
         grunt.file.setBase( options.cwd );
         // Print a success message.
         grunt.log.writeln('File "' + destination + '" created.');
